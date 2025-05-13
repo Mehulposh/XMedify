@@ -5,7 +5,7 @@ const EndPoint = 'https://meddata-backend.onrender.com'
 export async function getStates(){
     try {
         const response = await axios.get(`${EndPoint}/states`);
-        console.log(response.data);
+        // console.log(response.data);
         return response.data
     }
     catch(error){
