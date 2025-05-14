@@ -3,13 +3,14 @@
     border-radius: 15px;
     width: 1170px;
     height: 400px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     position: absolute;
     top: 700px;
     left: 135px;
-    z-index: 3;
+    z-index: 30;
 }
 
 

@@ -5,6 +5,7 @@ import Vission from './components/Vission/Vission'
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero'
 import Searchcard from './components/Searchcard/SearchCard';
+import Slider from './components/Slider/Slider'; 
 
 function App() {
   // const [states,setStates] = useState([]);
@@ -31,6 +32,7 @@ function App() {
     <Navbar/>
     <Hero/>
     <Searchcard  setCenters={setCenters}/>
+    <Slider/>
     </div>
   )
 }

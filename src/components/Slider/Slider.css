@@ -1,0 +1,35 @@
+.slider {
+  
+  position: relative;
+  
+  /* width: 80vw; */
+ 
+
+}
+  
+
+.sliderContainer{
+    position: absolute;
+    width: 80vw;
+    
+    left: 125px;
+    top: 1050px;
+    
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* border: 1px solid black; */
+    background-color: white;
+
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 0 ; /* Force placement below slides */
+  text-align: center;
+  
+}
+
+.slide{
+    padding-bottom: 50px;
+}
