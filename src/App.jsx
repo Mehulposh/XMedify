@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react'
 import { getStates } from './api/api';
 import './App.css'
+import Vission from './components/Vission/Vission'
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const [states,setStates] = useState([]);
@@ -23,6 +25,8 @@ function App() {
 
   return (
     <div>
+    <Vission/>
+    <Navbar/>
       States :- 
       <div>
         {states}
