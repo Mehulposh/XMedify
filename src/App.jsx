@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero'
 import Searchcard from './components/Searchcard/SearchCard';
 import Slider from './components/Slider/Slider'; 
+import Sepciality from './components/SpecialitySection/Specialityection';
 
 function App() {
   // const [states,setStates] = useState([]);
@@ -33,6 +34,7 @@ function App() {
     <Hero/>
     <Searchcard  setCenters={setCenters}/>
     <Slider/>
+    <Sepciality/>
     </div>
   )
 }
