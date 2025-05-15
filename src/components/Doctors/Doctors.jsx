@@ -31,11 +31,11 @@ function DoctorSlider(){
                     loop= {true}
                     // spaceBetween={10}
                     slidesPerView={3}
-                    centeredSlides={true}
+                    // centeredSlides={true}
                     pagination={{ clickable: true }}
                 >
-                    {DoctorData.map((item) => (
-                        <SwiperSlide className='slide'>
+                    {DoctorData.map((item,idx) => (
+                        <SwiperSlide className='slide' key={idx}>
                             <img src={item.image} alt={item.label}/>
                             <h3>{item.label}</h3>
                             <p>{item.speciality}</p>

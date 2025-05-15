@@ -8,14 +8,14 @@
 }
 
 .specialitySection{
-    position: absolute;
-    top: 1450px;
+    /* position: absolute; */
+    /* top: 1450px; */
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* padding: 50px; */
+    padding-bottom: 20px;
     border: 1px solid black;
     gap: 30px;
 }
