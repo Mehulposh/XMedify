@@ -8,6 +8,7 @@ import Searchcard from './components/Searchcard/SearchCard';
 import Slider from './components/Slider/Slider'; 
 import Sepciality from './components/SpecialitySection/Specialityection';
 import DoctorSlider from './components/Doctors/Doctors';
+import PatientCare  from './components/PatirntCare/PatientCare';
 
 function App() {
   // const [states,setStates] = useState([]);
@@ -37,6 +38,7 @@ function App() {
     <Slider/>
     <Sepciality/>
     <DoctorSlider/>
+    <PatientCare/>
     </div>
   )
 }
