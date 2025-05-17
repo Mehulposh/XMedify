@@ -55,7 +55,7 @@ function Footer() {
                     <p><MdArrowForwardIos/>Privacy Policy</p>
                 </div>
            </div>
-           <hr/>
+          
            <div className='footerbottom'>
             <p>Copyright ©2023 Surya Nursing Home.com. All Rights Reserved</p>
            </div>
