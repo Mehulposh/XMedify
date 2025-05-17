@@ -1,0 +1,23 @@
+.footer{
+    /* padding: 20px; */
+    background-color: rgba(27, 60, 116, 1);
+    color: white;
+    width: 100%;
+}
+
+
+.footertop{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.column2 , .column3, .column4, .column1{
+    
+    color: white;
+}
+
+.footer p{
+    color: white;
+    margin: 0;
+}

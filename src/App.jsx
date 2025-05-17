@@ -13,6 +13,7 @@ import News from './components/News/News';
 import Family from './components/Family/Family';
 import FAQ from './components/FAQ/Faq';
 import Access from './components/Accessibility/Access';
+import Footer from './components/Footer/Footer';
 
 function App() {
   // const [states,setStates] = useState([]);
@@ -46,7 +47,8 @@ function App() {
     <News/>
     <Family/>
     <FAQ/>
-    <Access/>
+    {/* <Access/> */}
+    <Footer/>
     </div>
   )
 }
