@@ -11,6 +11,7 @@ import DoctorSlider from './components/Doctors/Doctors';
 import PatientCare  from './components/PatirntCare/PatientCare';
 import News from './components/News/News';
 import Family from './components/Family/Family';
+import FAQ from './components/FAQ/Faq';
 
 function App() {
   // const [states,setStates] = useState([]);
@@ -43,6 +44,7 @@ function App() {
     <PatientCare/>
     <News/>
     <Family/>
+    <FAQ/>
     </div>
   )
 }
