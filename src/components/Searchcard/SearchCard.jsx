@@ -1,4 +1,6 @@
-import React ,{useEffect,useState} from 'react';
+import React  from 'react';
+import { AppContext } from '../../Context/AppContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import DropDown from '../Dropdown/Dropdown';
 import { getStates, getCities , getCenters } from '../../api/api'; 
@@ -14,30 +16,31 @@ import './SearchCard.css';
 
 const assests = [Doctor,DrugStore,Hospital,Capsule,Ambulance];
 
-function Searchcard({setCenters}){
-    const [selectedState , setSelectedState] = useState('');
-    const [selectedCity, setSelectedCity] = useState(''); 
+function Searchcard(){
+    const { setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity } = React.useContext(AppContext);
+    const navigate = useNavigate();
+    
 
-    useEffect(() => {
-        async function fetchCenters(){
-            try {
-                const data = await getCenters(selectedCity,selectedState);
-                setCenters(data);
-                console.log(data);
-            }
-            catch(err){
-                console.error(err);
-            }
-        }
+  const handleSubmit = async () => {
+    try {
+        // Fetch centers based on the selected city and state
+        const data = await getCenters(selectedCity, selectedState);
+        setCenters(data);
+        console.log(data);
 
-        fetchCenters();
-    } , [selectedCity])
+        // Navigate to the slot selection page
+        navigate('/slot-selection');
+    } catch (err) {
+        console.error(err);
+    }
+};
+
     return(
         <div className='searchCard'>
             <div className='seachOptions'>
                 <DropDown placeholder='states' fetchData={getStates} setFunction={setSelectedState} id='state'/>
                 <DropDown placeholder='cities' fetchData={getCities} state={selectedState} setFunction={setSelectedCity} id='city'/>
-                <Button>
+                <Button type='submit' onClick={handleSubmit}>
                     <img src={Search}/>
                     Search
                 </Button>

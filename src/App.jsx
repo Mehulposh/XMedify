@@ -1,56 +1,23 @@
-import React, { useState,useEffect } from 'react'
-
-import './App.css'
-import Vission from './components/Vission/Vission'
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero'
-import Searchcard from './components/Searchcard/SearchCard';
-import Slider from './components/Slider/Slider'; 
-import Sepciality from './components/SpecialitySection/Specialityection';
-import DoctorSlider from './components/Doctors/Doctors';
-import PatientCare  from './components/PatirntCare/PatientCare';
-import News from './components/News/News';
-import Family from './components/Family/Family';
-import FAQ from './components/FAQ/Faq';
-import Access from './components/Accessibility/Access';
-import Footer from './components/Footer/Footer';
+import React , { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import SlotSelection from "./pages/SlotSelection";
+import { AppContext } from "./Context/AppContext";
 
 function App() {
-  // const [states,setStates] = useState([]);
-  // const [cities,setCities] = useState([]);
-  const [centers,setCenters] = useState([]);
-
-  // useEffect(()=> {
-  //   async function fetchStates(){
-  //     try{
-  //       const data = await getStates();
-  //       console.log(data);
-  //       setStates(data);
-  //     }catch(err){
-  //       console.error(err); 
-  //     }
-  //   };
-
-  //   fetchStates();
-  // },[]);
-
-  return (
-    <div>
-    <Vission/>
-    <Navbar/>
-    <Hero/>
-    <Searchcard  setCenters={setCenters}/>
-    <Slider/>
-    <Sepciality/>
-    <DoctorSlider/>
-    <PatientCare/>
-    <News/>
-    <Family/>
-    <FAQ/>
-    {/* <Access/> */}
-    <Footer/>
-    </div>
-  )
+     const [states,setStates] = useState([]);
+     const [cities,setCities] = useState([]);
+     const [centers,setCenters] = useState([]);
+     const [selectedState , setSelectedState] = useState('');
+     const [selectedCity, setSelectedCity] = useState(''); 
+    return (
+        <AppContext.Provider value={{ states, setStates, cities, setCities, centers, setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity }}>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/slot-selection" element={<SlotSelection />} />
+            </Routes>
+        </AppContext.Provider>
+    )
 }
 
-export default App
+export default App;

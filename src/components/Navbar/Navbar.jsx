@@ -2,14 +2,17 @@ import React from 'react';
 import './Navbar.css';
 import Logo from '../../assets/logo.svg';
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
-function Navbar(){
+function Navbar({bottom}){
+    const navigate = useNavigate();
     return (
-        <div className='navBar'>
-            <div className='logo' >
-                <img src={Logo}/>
-            </div>
-            <div className='options'>
+        <div className='navBar' onClick={() => navigate('/')}>
+            <div className='nav-top'>
+                <div className='logo' >
+                    <img src={Logo}/>
+                </div>
+                <div className='options'>
                 <ul>
                     <li>
                         <p>Find Doctors</p>.
@@ -33,7 +36,9 @@ function Navbar(){
                         <Button>My Bookings</Button>
                     </li>
                 </ul>
+                </div>
             </div>
+            {bottom && <div className='lowerbar'></div>}
         </div>
     )
 }
