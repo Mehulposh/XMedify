@@ -15,6 +15,7 @@ function Footer() {
                     <div className='footerlogo'>
                         
                             <img src={Logo} alt="Medify" />
+                            <p>Medify</p>
                             
                             
                     </div>

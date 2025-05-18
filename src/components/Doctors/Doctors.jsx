@@ -21,6 +21,7 @@ const DoctorData = [
 function DoctorSlider(){
     return (
         <div className='doctorContainer'>
+            <p className='title'>Our Medical Specialist</p>
             <div className='doctorSlider'>
                 <Swiper
                      modules={[Autoplay,Pagination]}

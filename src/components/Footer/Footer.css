@@ -6,6 +6,13 @@
 
 }
 
+.footerlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 
 .footertop{
     display: flex;
@@ -64,4 +71,13 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 15px;
 
+}
+
+.footerlogo p{
+    font-family: Poppins;
+font-weight: 700;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 2%;
+color: rgba(42, 168, 255, 1);
 }

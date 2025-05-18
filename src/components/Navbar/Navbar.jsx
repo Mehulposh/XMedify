@@ -11,31 +11,32 @@ function Navbar({bottom}){
             <div className='nav-top'>
                 <div className='logo' >
                     <img src={Logo}/>
+                    <p> Medify</p>
                 </div>
                 <div className='options'>
-                <ul>
-                    <li>
+                
+                    
                         <p>Find Doctors</p>.
-                    </li>
-                    <li>
+                    
+                    
                         <p>Hospitals</p>
-                    </li>
-                    <li>
+                    
+                    
                         <p>Medicines</p>
-                    </li>
-                    <li>
+                    
+                    
                         <p>Surguries</p>
-                    </li>
-                    <li>
+                    
+                    
                         <p>Software for Provider</p>
-                    </li>
-                    <li>
+                    
+                    
                         <p>Facilities</p>
-                    </li>
-                    <li>
+                    
+                    
                         <Button>My Bookings</Button>
-                    </li>
-                </ul>
+                    
+                
                 </div>
             </div>
             {bottom && <div className='lowerbar'></div>}
