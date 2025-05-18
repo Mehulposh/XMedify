@@ -57,6 +57,7 @@
 
 .footer .column2{
     margin: 0;
+     
     
 }
 
@@ -80,4 +81,14 @@ font-size: 24px;
 line-height: 100%;
 letter-spacing: 2%;
 color: rgba(42, 168, 255, 1);
+}
+
+.column2 p, .column3 p, .column4 p{
+    font-family: Roboto;
+font-weight: 400;
+font-size: 16px;
+line-height: 28px;
+letter-spacing: 0%;
+vertical-align: middle;
+
 }
