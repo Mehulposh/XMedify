@@ -32,7 +32,7 @@ function Home() {
     };
 
     fetchStates();
-  },[]);
+  },[setStates]);
 
   return (
     <div>

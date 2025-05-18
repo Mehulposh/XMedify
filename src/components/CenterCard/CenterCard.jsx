@@ -1,6 +1,6 @@
 import React  from "react";
 import center from '../../assets/center.svg';
-import tumb from '../../assets/thumb.svg';
+import thumb from '../../assets/thumb.svg';
 import Button from "../Button/Button";
 import './CenterCard.css';
 
@@ -22,15 +22,15 @@ function CenterCard({data}) {
                 <img src={center} alt="Center" />
             </div>
             <div className="center-details">
-                <h3>{data['name']}</h3>
-                <p className="center-location">{data['city']}, {data['state']}</p>
+                <h3>{data['name'] || 'title'}</h3>
+                <p className="center-location">{data['city']|| 'city'}, {data['state']|| 'state'}</p>
                 <p className="more">Smilessence Center for Advanced Dentistry + 1 more</p>
                 <p ><span className="free">FREE</span> <span className="price">₹500</span> <span className="feeDeclaration">Consultation fee at clinic</span> </p>
                 
                 <div className="rating">
                     <p >
-                        <img src={tumb} alt="Rating" />
-                        {data['rating']}
+                        <img src={thumb} alt="Rating" />
+                        {data['rating'] || 5}
                     </p>
                 </div>
             </div>
