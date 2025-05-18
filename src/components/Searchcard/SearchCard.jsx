@@ -35,8 +35,8 @@ function Searchcard({setCenters}){
     return(
         <div className='searchCard'>
             <div className='seachOptions'>
-                <DropDown placeholder='states' fetchData={getStates} setFunction={setSelectedState}/>
-                <DropDown placeholder='cities' fetchData={getCities} state={selectedState} setFunction={setSelectedCity}/>
+                <DropDown placeholder='states' fetchData={getStates} setFunction={setSelectedState} id='state'/>
+                <DropDown placeholder='cities' fetchData={getCities} state={selectedState} setFunction={setSelectedCity} id='city'/>
                 <Button>
                     <img src={Search}/>
                     Search

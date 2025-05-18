@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import './Dropdown.css';
 
-function DropDown({fetchData, placeholder , state , setFunction}){
+function DropDown({fetchData, placeholder , state , setFunction , id}){
     const [data,setData] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function DropDown({fetchData, placeholder , state , setFunction}){
 
 
     return (
-        <div>
+        <div id={id}>
             <select className={state ? 'cities' : 'state'} onChange={(e) => setFunction(e.target.value)}>
                 <option disabled selected value=''> {placeholder}</option>
                 {data.map((item) => (
