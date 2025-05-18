@@ -13,7 +13,7 @@ function Family() {
                 <p className='familyDescription'>We will work with you to develop individualised care plans, including management of chronic diseases. If we cannot assist, we can provide referrals or advice about the type of practitioner you require. We treat all enquiries sensitively and in the strictest confidence.</p>
             </div>
             <div className='familyLeft'>
-                <div className='column1'>
+                <div className='family-column1'>
                    
                         <div className='happy'>
                             <div><img src={Happy} alt="Happy patients" /></div>
@@ -27,7 +27,7 @@ function Family() {
                         </div>
                     
                 </div>
-                <div className='column2'>
+                <div className='family-column2'>
                    
                         <div className='hospital'>
                             <div><img src={Hospital} alt="Hospital" /></div>

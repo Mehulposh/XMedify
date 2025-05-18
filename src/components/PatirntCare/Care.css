@@ -1,12 +1,14 @@
-.sentence1{
+.care-sentence1{
     font-weight: 600;
     font-size: 16px;
     line-height: 27px;
     vertical-align: middle;
     margin: 0;
+     color: rgba(42, 167, 255, 1);
 }
 
-.heading{
+.care-heading{
+    font-family: Poppins;
     font-weight: 600;
     font-size: 48px;
     line-height: 67px;
@@ -15,7 +17,7 @@
     margin: 0;
 }
 
-span{
+.care-heading span{
     color: rgba(42, 167, 255, 1);
 }
 
@@ -56,11 +58,13 @@ span{
     padding-left: 0;
     width: 100vw;
     height: 65vh;
-    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    border: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
+    gap: 250px;
+    
 }
 
 .careImage1, .careImage2{
@@ -102,19 +106,20 @@ span{
 
 .consultationTop{
     display: flex;
+    align-items: center;
 }
 
 .free{
-    font: Inter;
+    
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
     vertical-align: middle;
-    color: rgba(27, 60, 116, 1);
+    color: rgba(27, 60, 116, 1) !important;
 }
 
-.bottom{
-    font: Inter;
+.care-bottom{
+    
     font-weight: 500;
     font-size: 15px;
     line-height: 24px;

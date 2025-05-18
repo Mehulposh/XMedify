@@ -9,8 +9,8 @@ function PatientCare() {
     return (
         <div className='PatientCare'>
             <div className='Goals'>
-                <p className='sentence1'>HELPING PATIENTS FROM AROUND THE GLOBE!!</p>
-                <h2 className='heading'>Patient <span> Caring </span></h2>
+                <p className='care-sentence1'>HELPING PATIENTS FROM AROUND THE GLOBE!!</p>
+                <h2 className='care-heading'>Patient <span> Caring </span></h2>
                 <p className='goal'>Our goal is to deliver quality of care in a courteous, respectful, and <br/> compassionate manner. We hope you will allow us to care for you and <br/>strive to be the first and best choice for healthcare.</p>
                 <p className='tickList'> 
                     <img src={Tick} alt="tick" />
@@ -37,7 +37,7 @@ function PatientCare() {
                         <img src={phone} alt='phone'/>
                         <p className='free'>Free Consultation</p>
                     </div>
-                    <p className='bottom'>Consultation with the best</p>
+                    <p className='care-bottom'>Consultation with the best</p>
                 </div>
             </div>
         </div>

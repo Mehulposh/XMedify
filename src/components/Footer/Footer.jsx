@@ -11,7 +11,7 @@ function Footer() {
     return (
         <div className='footer'>
            <div className='footertop'>
-                <div className='column1'>
+                <div className='footer-column1'>
                     <div className='footerlogo'>
                         
                             <img src={Logo} alt="Medify" />
@@ -34,21 +34,21 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className='column2'>
+                <div className='footer-column2'>
                     <p><MdArrowForwardIos/>About Us</p>
                     <p><MdArrowForwardIos/>Our Pricing</p>
                     <p><MdArrowForwardIos/>Our Gallery</p>
                     <p><MdArrowForwardIos/>Appointment</p>
                     <p><MdArrowForwardIos/>Privacy Policy</p>
                 </div>
-                <div className='column3'>
+                <div className='footer-column3'>
                     <p><MdArrowForwardIos/>Orthology</p>
                     <p><MdArrowForwardIos/>Neurology</p>
                     <p><MdArrowForwardIos/>Dental Care</p>
                     <p><MdArrowForwardIos/>Opthalmology</p>
                     <p><MdArrowForwardIos/>Cardiology</p>
                 </div>
-                <div className='column4'>
+                <div className='footer-column4'>
                     <p><MdArrowForwardIos/>About Us</p>
                     <p><MdArrowForwardIos/>Our Pricing</p>
                     <p><MdArrowForwardIos/>Our Gallery</p>

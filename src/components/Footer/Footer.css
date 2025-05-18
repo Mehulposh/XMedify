@@ -3,6 +3,7 @@
     background-color: rgba(27, 60, 116, 1);
     color: white;
     width: 100%;
+    padding: 20px;
 
 }
 
@@ -18,9 +19,10 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 10px;
 }
 
-.column1{
+.footer-column1{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -55,7 +57,7 @@
     line-height: normal;
 }
 
-.footer .column2{
+.footer-column2{
     margin: 0;
      
     
@@ -83,7 +85,7 @@ letter-spacing: 2%;
 color: rgba(42, 168, 255, 1);
 }
 
-.column2 p, .column3 p, .column4 p{
+.footer-column2 p, .footer-column3 p, .footer-column4 p{
     font-family: Roboto;
 font-weight: 400;
 font-size: 16px;
