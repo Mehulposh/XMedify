@@ -3,8 +3,7 @@ import { AppContext } from '../Context/AppContext';
 import { getStates } from '../api/api';
 
 // import './App.css'
-import Vission from '../components/Vission/Vission'
-import Navbar from '../components/Navbar/Navbar';
+
 import Hero from '../components/Hero/Hero'
 import Searchcard from '../components/Searchcard/SearchCard';
 import Slider from '../components/Slider/Slider'; 
@@ -37,10 +36,9 @@ function Home() {
 
   return (
     <div>
-    <Vission/>
-    <Navbar/>
+    s
     <Hero/>
-    <Searchcard  />
+    <Searchcard bottom={true} />
     <Slider/>
     <Sepciality/>
     <DoctorSlider/>

@@ -16,7 +16,7 @@ import './SearchCard.css';
 
 const assests = [Doctor,DrugStore,Hospital,Capsule,Ambulance];
 
-function Searchcard(){
+function Searchcard({bottom}){
     const { setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity } = React.useContext(AppContext);
     const navigate = useNavigate();
     
@@ -36,7 +36,7 @@ function Searchcard(){
 };
 
     return(
-        <div className='searchCard'>
+        <div className={bottom ? 'searchCard' : 'searchCard2'}>
             <div className='seachOptions'>
                 <DropDown placeholder='states' fetchData={getStates} setFunction={setSelectedState} id='state'/>
                 <DropDown placeholder='cities' fetchData={getCities} state={selectedState} setFunction={setSelectedCity} id='city'/>
@@ -45,12 +45,12 @@ function Searchcard(){
                     Search
                 </Button>
             </div>
-            <div className='serviceCards'>
+            {bottom &&<div className='serviceCards'>
                 <p className='helptext'>You may be looking for</p>
                 <div className='services'>
                     {assests.map( (item) => <ServiceCard image={item}/>)}
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

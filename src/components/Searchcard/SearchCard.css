@@ -41,3 +41,19 @@
     display: flex;
     gap: 10px;
 }
+
+.searchCard2{
+    
+    box-shadow: 6px 6px 35px 0px rgba(16, 40, 81, 0.11);
+    border-radius: 15px;
+    width: 80%;
+    height: 90px;
+    padding: 15px;
+    background-color: white;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    z-index: 30;
+    text-align: center;
+    
+}

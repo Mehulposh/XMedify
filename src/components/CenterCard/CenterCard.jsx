@@ -1,0 +1,47 @@
+import React  from "react";
+import center from '../../assets/center.svg';
+import tumb from '../../assets/thumb.svg';
+import Button from "../Button/Button";
+import './CenterCard.css';
+
+
+// const data = {
+//     "Hospital Name": "City Hospital",
+//     "Address": "123 Main St",
+//     "City": "Metropolis",
+//     "State": "NY",
+//     "ZIP Code": "12345",
+//     "Hospital overall rating": 4.5
+// };
+
+function CenterCard({data}) {
+    return (
+        <div className="center-card">
+           
+            <div className="center-image">
+                <img src={center} alt="Center" />
+            </div>
+            <div className="center-details">
+                <h3>{data['name']}</h3>
+                <p className="center-location">{data['city']}, {data['state']}</p>
+                <p className="more">Smilessence Center for Advanced Dentistry + 1 more</p>
+                <p ><span className="free">FREE</span> <span className="price">₹500</span> <span className="feeDeclaration">Consultation fee at clinic</span> </p>
+                
+                <div className="rating">
+                    <p >
+                        <img src={tumb} alt="Rating" />
+                        {data['rating']}
+                    </p>
+                </div>
+            </div>
+            <div className="center-booking">
+                <p>Available Today</p>
+                <Button className="book-button">Book FREE Center Visit</Button>
+
+            </div>
+
+        </div>
+    )
+}
+
+export default CenterCard;
