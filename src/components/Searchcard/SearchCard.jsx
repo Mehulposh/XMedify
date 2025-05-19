@@ -40,7 +40,7 @@ function Searchcard({bottom}){
             <div className='seachOptions'>
                 <DropDown placeholder='states' fetchData={getStates} setFunction={setSelectedState} id='state'/>
                 <DropDown placeholder='cities' fetchData={getCities} state={selectedState} setFunction={setSelectedCity} id='city'/>
-                <Button type='submit' onClick={handleSubmit}>
+                <Button type='submit' onClick={handleSubmit} id='searchBtn'>
                     <img src={Search}/>
                     Search
                 </Button>
