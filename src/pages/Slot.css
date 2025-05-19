@@ -5,20 +5,21 @@
    padding-top: 100px;
    gap: 0;
    width: 100%;
+   margin-bottom: 20px;
    /* align-items: flex-start; */
     
 }
 
-.column2{
+.slot-column2{
     margin-top: 50px;
 }
 
-.column2 img{
+.slot-column2 img{
     width: 260px;
     height: 200px;
 }
 
-.column1 h1{
+.slot-column1 h1{
     font-family: Poppins;
 font-weight: 500;
 font-size: 24px;
@@ -42,9 +43,9 @@ color: rgba(120, 120, 135, 1);
 }
 
 
-.column1{
+.slot-column1{
     width: 70%;
-    gap: 10px;
+    gap: 20px;
 }
 
 .navbarbottom{

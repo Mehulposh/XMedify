@@ -3,6 +3,7 @@ import center from '../../assets/center.svg';
 import thumb from '../../assets/thumb.svg';
 import Button from "../Button/Button";
 import './CenterCard.css';
+import Booking from '../Slots/Slots';
 
 
 // const data = {
@@ -15,7 +16,9 @@ import './CenterCard.css';
 // };
 
 function CenterCard({data}) {
+    const [centerId , setCenterId] = React.useState('');
     return (
+        <div className="center-card-container">
         <div className="center-card">
            
             <div className="center-image">
@@ -36,10 +39,12 @@ function CenterCard({data}) {
             </div>
             <div className="center-booking">
                 <p>Available Today</p>
-                <Button className="book-button">Book FREE Center Visit</Button>
+                <Button className="book-button" onClick={() => centerId ? setCenterId('') : setCenterId(data['id'])}>Book FREE Center Visit</Button>
 
             </div>
-
+            
+        </div>
+        <div className="booking-slots">{centerId && (<Booking/>)}</div>
         </div>
     )
 }

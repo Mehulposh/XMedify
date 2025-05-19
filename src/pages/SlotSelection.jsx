@@ -3,6 +3,8 @@ import { AppContext } from "../Context/AppContext";
 import promo from '../../src/assets/addvertise.svg';2
 import Searchcard from "../components/Searchcard/SearchCard";
 import CenterCard from "../components/CenterCard/CenterCard";
+import Faq from "../components/FAQ/Faq";
+import Footer from "../components/Footer/Footer";
 import './Slot.css'
 
 function SlotSelection() {
@@ -13,7 +15,7 @@ function SlotSelection() {
             <Searchcard/>
            <div className="card-container">
             
-                 <div className="column1">
+                 <div className="slot-column1">
                     <h1>{centers.length} medical centers available in {selectedCity}</h1>
                     <p className="subheading">Book appointments with minimum wait-time & verified doctor details</p>
                     {centers.length>0 ? (
@@ -24,6 +26,7 @@ function SlotSelection() {
                                 'state': center['State'],
                                 'code': center['ZIP Code'],
                                 'rating': center['Hospital overall rating'],
+                                'id': center['Provider ID'],
                             };
                            return <CenterCard key={center['Provider ID']} data={data}/>
                         })
@@ -31,10 +34,13 @@ function SlotSelection() {
                         <h2>No centers available</h2>
                     )}
                  </div>
-                 <div className="column2">
+                 <div className="slot-column2">
                     <img src={promo} alt="advertisement" />
                  </div>
             </div>
+
+            <Faq/>
+            <Footer/>
           
         </div>
     )

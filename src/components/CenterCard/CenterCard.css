@@ -1,10 +1,18 @@
+.center-card-container{
+    background-color: white;
+    width: 80%;
+    border-radius: 10px;
+}
+
 .center-card{
     display: flex;
     justify-content: space-around;
-    width: 80%;
+    
     padding: 20px;
-    border-radius: 10px;
-    background-color: white;
+    
+    /* background-color: white; */
+    /* margin-bottom: 15px; */
+    border-bottom: 1px dotted gray;
 }
 
 .center-details h3{
