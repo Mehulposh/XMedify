@@ -17,7 +17,7 @@ function SlotSelection() {
            <div className="card-container">
             
                  <div className="slot-column1">
-                    <h1>{centers.length} medical centers available in {selectedCity}</h1>
+                    <h1>{centers.length} medical centers available in {selectedCity.toLowerCase()}</h1>
                     <p className="subheading">Book appointments with minimum wait-time & verified doctor details</p>
                     {centers.length>0 ? (
                         centers.map((center) => {
