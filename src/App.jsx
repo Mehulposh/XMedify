@@ -15,11 +15,12 @@ function App() {
      const [centers,setCenters] = useState([]);
      const [selectedState , setSelectedState] = useState('');
      const [selectedCity, setSelectedCity] = useState(''); 
+     const [bookingDetails, setBookingDetails] = React.useState(null);
 
      console.log('selected state:', selectedState);
      console.log('selected city:', selectedCity);
     return (
-        <AppContext.Provider value={{ states, setStates, cities, setCities, centers, setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity }}>
+        <AppContext.Provider value={{ states, setStates, cities, setCities, centers, setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity , bookingDetails, setBookingDetails }}>
             <Vission/>
             <Navbar/>
             <Routes>

@@ -4,12 +4,28 @@ import promo from '../../src/assets/addvertise.svg';2
 import Searchcard from "../components/Searchcard/SearchCard";
 import CenterCard from "../components/CenterCard/CenterCard";
 import Faq from "../components/FAQ/Faq";
-import Footer from "../components/Footer/Footer";
-import Access from "../components/Accessibility/Access";
+
 import './Slot.css'
 
 function SlotSelection() {
-    const { centers , selectedCity} = React.useContext(AppContext);
+    const { centers , selectedCity , setBookingDetails} = React.useContext(AppContext);
+    const [selectedCenter, setSelectedCenter] = React.useState(null);
+    // const [bookingDetails, setBookingDetails] = React.useState(null);
+
+    const handleBooking = (details) => {
+        const bookingDetails = {
+            ...details,
+            name: selectedCenter?.name,
+            city: selectedCenter?.city,
+            state: selectedCenter?.state,
+            id: selectedCenter?.id,
+        };
+        const previousBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+        const newDetails = [...previousBookings, bookingDetails]
+        localStorage.setItem('bookings', JSON.stringify(newDetails));
+        setBookingDetails(bookingDetails);
+    }
     return (
         <div className="slot-selection">
             <div className="navbarbottom"></div>
@@ -29,7 +45,13 @@ function SlotSelection() {
                                 'rating': center['Hospital overall rating'],
                                 'id': center['Provider ID'],
                             };
-                           return <CenterCard key={center['Provider ID']} data={data}/>
+                           return <CenterCard 
+                                        key={center['Provider ID']} 
+                                        data={data} 
+                                        centerSelect={(selectedCenter) => setSelectedCenter(selectedCenter)} 
+                                        isSlotSelected={selectedCenter && selectedCenter.id === data.id}
+                                        onBooking={handleBooking}
+                                        />
                         })
                     ) : (
                         <h2>No centers available</h2>

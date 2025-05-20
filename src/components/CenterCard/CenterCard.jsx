@@ -15,8 +15,19 @@ import Booking from '../Slots/Slots';
 //     "Hospital overall rating": 4.5
 // };
 
-function CenterCard({data}) {
-    const [centerId , setCenterId] = React.useState('');
+function CenterCard({data, centerSelect, isSlotSelected, onBooking}) {
+    const [showSlots , setShowSlots] = React.useState(false);
+    
+
+    const handleClick = () => {
+        setShowSlots(!showSlots);
+         if (centerSelect) {
+            centerSelect(showSlots ? null : data); // Pass data when selecting, null when deselecting
+        }
+
+    }
+
+    
     return (
         <div className="center-card-container">
         <div className="center-card">
@@ -39,12 +50,12 @@ function CenterCard({data}) {
             </div>
             <div className="center-booking">
                 <p>Available Today</p>
-                <Button className="book-button" onClick={() => centerId ? setCenterId('') : setCenterId(data['id'])}>Book FREE Center Visit</Button>
+                <Button className="book-button" onClick={handleClick} >Book FREE Center Visit</Button>
 
             </div>
             
         </div>
-        <div className="booking-slots">{centerId && (<Booking/>)}</div>
+        <div className="booking-slots">{isSlotSelected && (<Booking confirmBooking={onBooking}/>)}</div>
         </div>
     )
 }

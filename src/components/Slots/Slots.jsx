@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Box, Button, Typography, Grid, IconButton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
-const SlotBooking = () => {
+const SlotBooking = ({confirmBooking}) => {
   const [selectedDate, setSelectedDate] = useState("Today");
   const [selectedSlot, setSelectedSlot] = useState("");
 
   const dates = [
-    { day: "Today", slotsAvailable: 11 },
-    { day: "Tomorrow", slotsAvailable: 17 },
-    { day: "Fri, 5 May", slotsAvailable: 18 },
+    { day: "Today", date: new Date().toDateString(), slotsAvailable: 11 },
+        { day: "Tomorrow", date: new Date(Date.now() + 86400000).toDateString(), slotsAvailable: 17 },
+        { day: "Fri, 22 May", date: "2025-05-22", slotsAvailable: 18 },
   ];
 
   const slots = {
@@ -18,13 +18,30 @@ const SlotBooking = () => {
     Evening: ["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"],
   };
 
-  const handleDateChange = (day) => {
+  
+
+ const handleDateSelect = (day) => {
     setSelectedDate(day);
-    setSelectedSlot(""); // Reset selected slot when changing dates
+    if (selectedSlot) {
+      // Pass updated booking details to parent
+      const bookingDetails = {
+        date: dates.find((d) => d.day === day)?.date || day,
+        time: selectedSlot,
+      };
+      confirmBooking(bookingDetails);
+    }
   };
 
   const handleSlotSelect = (slot) => {
     setSelectedSlot(slot);
+    if (selectedDate) {
+      // Pass updated booking details to parent
+      const bookingDetails = {
+        date: dates.find((d) => d.day === selectedDate)?.date || selectedDate,
+        time: slot,
+      };
+      confirmBooking(bookingDetails);
+    }
   };
 
   return (
@@ -50,7 +67,7 @@ const SlotBooking = () => {
                 cursor: "pointer",
                 color: selectedDate === date.day ? "black" : "gray",
               }}
-              onClick={() => handleDateChange(date.day)}
+              onClick={() => handleDateSelect(date.day)}
             >
               <Typography variant="subtitle1" component='p' fontWeight="bold">
                 {date.day}
