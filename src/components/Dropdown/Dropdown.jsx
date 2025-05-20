@@ -63,13 +63,13 @@ function DropDown({fetchData, placeholder , state , setFunction ,id}){
                 {selectedOption ||placeholder} <IoIosArrowDown/>
             </div>
             {isOpen && (
-                <div className='dropdown-list'>
+                <ul className='dropdown-list'>
                     {data.map((item) => (
-                        <div key={item} className='dropdown-item' onClick={() => handleOption(item)}>
+                        <li key={item} className='dropdown-item' onClick={() => handleOption(item)}>
                             {item}
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ul>
             )}
         </div>
     )
