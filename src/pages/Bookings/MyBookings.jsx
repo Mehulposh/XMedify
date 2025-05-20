@@ -13,6 +13,7 @@ function MyBookings() {
     const data = JSON.parse(localStorage.getItem('bookings')) || [];
     console.log(data);
     setBookingData(data);
+    console.log('Booking data:', data);
   }, []);
 
   return (
@@ -31,7 +32,7 @@ function MyBookings() {
       <div className="bookingsColumn1">
         {bookingData.length > 0 ? (
           bookingData.map((item) => {
-            <CenterCard data={item} key={item.id}/>
+           return <CenterCard data={item} key={item.id}/>
           })
         ) : (
           <h1>No bookings available</h1>

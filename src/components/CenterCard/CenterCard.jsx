@@ -49,6 +49,10 @@ function CenterCard({data, centerSelect, isSlotSelected, onBooking}) {
                 </div>
             </div>
             <div className="center-booking">
+                <div className="bookingCard">
+                    <p>{data.time}</p>
+                    <p>{data.date}</p>
+                </div>
                 <p>Available Today</p>
                 <Button className="book-button" onClick={handleClick} >Book FREE Center Visit</Button>
 
