@@ -2,7 +2,7 @@ import React,{useState,useEffect,useRef} from 'react';
 import './Dropdown.css';
 import { IoIosArrowDown } from "react-icons/io";
 
-function DropDown({fetchData, placeholder , state , setFunction }){
+function DropDown({fetchData, placeholder , state , setFunction ,id}){
     const [data,setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -58,7 +58,7 @@ function DropDown({fetchData, placeholder , state , setFunction }){
     // )
 
     return(
-        <div className='dropdown' id={state ? 'city' : 'state'} ref={dropdownRef}>
+        <div className='dropdown' id={id} ref={dropdownRef}>
             <div className='dropdown-header' onClick={handleToggle}>
                 {selectedOption ||placeholder} <IoIosArrowDown/>
             </div>
