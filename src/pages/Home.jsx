@@ -46,8 +46,8 @@ function Home() {
     <News/>
     <Family/>
     <FAQ/>
-    <Access/>
-    <Footer/>
+    {/* <Access/>
+    <Footer/> */}
     </div>
   )
 }

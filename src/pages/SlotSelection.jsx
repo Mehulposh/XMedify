@@ -5,6 +5,7 @@ import Searchcard from "../components/Searchcard/SearchCard";
 import CenterCard from "../components/CenterCard/CenterCard";
 import Faq from "../components/FAQ/Faq";
 import Footer from "../components/Footer/Footer";
+import Access from "../components/Accessibility/Access";
 import './Slot.css'
 
 function SlotSelection() {
@@ -40,7 +41,8 @@ function SlotSelection() {
             </div>
 
             <Faq/>
-            <Footer/>
+            {/* <Access/>
+            <Footer/> */}
           
         </div>
     )

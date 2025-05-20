@@ -26,7 +26,7 @@ export async function getCities(stateName){
 
 export async function getCenters(cityName,stateName){
     try{
-        const response = await axios.get(`${EndPoint}/data/?state=${stateName}&city=${cityName}`);
+        const response = await axios.get(`${EndPoint}/data?state=${stateName}&city=${cityName}`);
         console.log(response.data);
         return response.data;
     }catch(error){

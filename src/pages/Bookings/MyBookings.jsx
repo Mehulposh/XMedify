@@ -3,6 +3,7 @@ import './Bookings.css';
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 
+
 function MyBookings() {
   return (
     <div className="my-bookings">
@@ -18,7 +19,7 @@ function MyBookings() {
     </div>
       
       <p>This is the My Bookings page.</p>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }   

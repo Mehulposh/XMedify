@@ -6,6 +6,8 @@ import MyBookings from "./pages/Bookings/MyBookings";
 import { AppContext } from "./Context/AppContext";
 import Vission from './components/Vission/Vission'
 import Navbar from './components/Navbar/Navbar';
+import Access from "./components/Accessibility/Access";
+import Footer from "./components/Footer/Footer";
 
 function App() {
      const [states,setStates] = useState([]);
@@ -13,6 +15,9 @@ function App() {
      const [centers,setCenters] = useState([]);
      const [selectedState , setSelectedState] = useState('');
      const [selectedCity, setSelectedCity] = useState(''); 
+
+     console.log('selected state:', selectedState);
+     console.log('selected city:', selectedCity);
     return (
         <AppContext.Provider value={{ states, setStates, cities, setCities, centers, setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity }}>
             <Vission/>
@@ -22,6 +27,8 @@ function App() {
                 <Route path="/slot-selection" element={<SlotSelection />} />
                 <Route path="/my-bookings" element={<MyBookings />} />
             </Routes>
+            <Access/>
+            <Footer/>
         </AppContext.Provider>
     )
 }

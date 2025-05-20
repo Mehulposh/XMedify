@@ -14,7 +14,7 @@ function DropDown({fetchData, placeholder , state , setFunction }){
 
         setSelectedOption(option);
         setIsOpen(false);
-        setFunction(selectedOption);
+        setFunction(option);
     }
 
     useEffect(() => {
