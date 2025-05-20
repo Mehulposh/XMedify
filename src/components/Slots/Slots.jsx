@@ -52,7 +52,7 @@ const SlotBooking = () => {
               }}
               onClick={() => handleDateChange(date.day)}
             >
-              <Typography variant="subtitle1" fontWeight="bold">
+              <Typography variant="subtitle1" component='p' fontWeight="bold">
                 {date.day}
               </Typography>
               <Typography
@@ -83,7 +83,7 @@ const SlotBooking = () => {
       {/* Time Slots */}
       {Object.keys(slots).map((period, index) => (
         <Box key={index} sx={{ mb: 3 , display: 'flex', justifyContent: 'flex-start' , alignItems: 'center' ,gap: 2, borderBottom: '1px solid rgba(240, 240, 245, 1)' ,p:2}}>
-          <Typography variant="p" fontWeight="400" fontSize="16px" color="rgba(65, 65, 70, 1)">
+          <Typography variant="p" component='p' fontWeight="400" fontSize="16px" color="rgba(65, 65, 70, 1)">
             {period}
           </Typography>
           <Grid container spacing={2} sx={{ mt: 1 }}>
