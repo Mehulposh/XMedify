@@ -1,18 +1,27 @@
 .access{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
+    gap: 10px;
+    /* justify-content: space-around; */
+    /* align-items: center; */
+    
 }
 
 .accessLeft{
     display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    align-items: center;
+
 }
 
 .accessRight {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 2%;
+    padding-top: 5%;
     gap: 20px;
     
 }
@@ -72,20 +81,11 @@ input{
     background-color: white;
 }
 
-.accessLeft{
-    position: relative;
-}
-
-.phone2{
-    position: absolute;
-    margin-top: 100px;
-    right: 0;
-}
-
-.download img{
-    margin: 0;
-}
-
 .download{
-    margin-top: 100px;
+    margin-top: 20px;
+}
+
+
+.phone{
+    width: 80%;
 }

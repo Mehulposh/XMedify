@@ -1,35 +1,76 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import './Dropdown.css';
+import { IoIosArrowDown } from "react-icons/io";
 
-function DropDown({fetchData, placeholder , state , setFunction , id}){
+function DropDown({fetchData, placeholder , state , setFunction }){
     const [data,setData] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
+    const dropdownRef = useRef(null);
+
+    const handleToggle = () => setIsOpen((prev) => !prev);
+
+    const handleOption = (option) =>{
+
+        setSelectedOption(option);
+        setIsOpen(false);
+        setFunction(selectedOption);
+    }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => 
+            document.removeEventListener('mousedown', handleClickOutside);
+        
+    }, []);
 
     useEffect(() => {
         async function fetch_data(){
                 try{ 
                     const data = state ? await fetchData(state) : await fetchData();
                     setData(data);
+                    console.log(data);
                 }catch(err){
                     console.error(err);
                 }
             }
 
             fetch_data();
-        
-        
-        
-        
+    
     },[state,fetchData]);
 
 
-    return (
-        <div id={id}>
-            <select className={state ? 'cities' : 'state'} onChange={(e) => setFunction(e.target.value)}>
-                <option disabled selected value=''> {placeholder}</option>
-                {data.map((item) => (
-                    <option key={item} value={item } > {item}</option>
-                ))}
-            </select>
+    // return (
+    //     <div id={id}>
+    //         <select className={state ? 'cities' : 'state'} onChange={(e) => setFunction(e.target.value)}>
+    //             <option disabled selected value=''> {placeholder}</option>
+    //             {data.map((item) => (
+    //                 <option key={item} value={item } > {item}</option>
+    //             ))}
+    //         </select>
+    //     </div>
+    // )
+
+    return(
+        <div className='dropdown' id={state ? 'city' : 'state'} ref={dropdownRef}>
+            <div className='dropdown-header' onClick={handleToggle}>
+                {selectedOption ||placeholder} <IoIosArrowDown/>
+            </div>
+            {isOpen && (
+                <div className='dropdown-list'>
+                    {data.map((item) => (
+                        <div key={item} className='dropdown-item' onClick={() => handleOption(item)}>
+                            {item}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

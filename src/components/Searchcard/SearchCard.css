@@ -15,10 +15,10 @@
 
 
 
-.seachOptions{
+.searchOptions{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .helptext{
@@ -52,7 +52,7 @@
     background-color: white;
     position: absolute;
     left: 150px;
-    top: 120px;
+    top: 140px;
     z-index: 30;
     text-align: center;
     

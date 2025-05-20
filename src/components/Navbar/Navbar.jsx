@@ -4,19 +4,20 @@ import Logo from '../../assets/logo.svg';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 
-function Navbar({bottom}){
+function Navbar(){
     const navigate = useNavigate();
+
     return (
-        <div className='navBar' onClick={() => navigate('/')}>
-            <div className='nav-top'>
-                <div className='logo' >
+        <div className='navBar'>
+            
+                <div className='logo'  onClick={() => navigate('/')}>
                     <img src={Logo}/>
                     <p> Medify</p>
                 </div>
                 <div className='options'>
                 
                     
-                        <p>Find Doctors</p>.
+                        <p>Find Doctors</p>
                     
                     
                         <p>Hospitals</p>
@@ -32,14 +33,13 @@ function Navbar({bottom}){
                     
                     
                         <p>Facilities</p>
-                    
-                    
-                        <Button>My Bookings</Button>
-                    
-                
+
+
+                        <Button id='bookings' onClick={() => navigate('/my-bookings')}>My Bookings</Button>
+
                 </div>
-            </div>
-            {bottom && <div className='lowerbar'></div>}
+          
+           
         </div>
     )
 }
