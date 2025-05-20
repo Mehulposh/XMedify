@@ -15,10 +15,10 @@ function SlotSelection() {
     const handleBooking = (details) => {
         const bookingDetails = {
             ...details,
-            name: selectedCenter?.name,
-            city: selectedCenter?.city,
-            state: selectedCenter?.state,
-            id: selectedCenter?.id,
+            'Hospital Name': selectedCenter?.name,
+            'city': selectedCenter?.city,
+            'state': selectedCenter?.state,
+            'id': selectedCenter?.id,
         };
         const previousBookings = JSON.parse(localStorage.getItem('bookings')) || [];
 
@@ -32,7 +32,7 @@ function SlotSelection() {
             <Searchcard/>
            <div className="card-container">
             
-                 <div className="slot-column1">
+                <div className="slot-column1">
                     <h1>{centers.length} medical centers available in {selectedCity.toLowerCase()}</h1>
                     <p className="subheading">Book appointments with minimum wait-time & verified doctor details</p>
                     {centers.length>0 ? (
@@ -56,7 +56,7 @@ function SlotSelection() {
                     ) : (
                         <h2>No centers available</h2>
                     )}
-                 </div>
+                </div>
                  <div className="slot-column2">
                     <img src={promo} alt="advertisement" />
                  </div>
