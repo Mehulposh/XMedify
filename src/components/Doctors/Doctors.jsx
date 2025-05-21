@@ -34,7 +34,7 @@ function DoctorSlider(){
                         disableOnInteraction: false,
                     }}
                     loop={true}
-                    spaceBetween={10}
+                    spaceBetween={20}
                     slidesPerView={4}
                     // centeredSlides={true}
                     pagination={{ clickable: true }}

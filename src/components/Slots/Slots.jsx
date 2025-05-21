@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Box, Button, Typography, Grid, IconButton } from "@mui/material";
+import { Box, Button, Typography, Grid, IconButton, Stack , Chip , Modal } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { format, add, isEqual, startOfDay } from 'date-fns'
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 function dateList(){
   const Today = startOfDay(new Date());
@@ -19,12 +23,16 @@ const SlotBooking = ({confirmBooking}) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedSlot, setSelectedSlot] = useState("");
   const [datesList , setDatesList] = useState(dateList());
+  const [open,setOpen] = useState(false);
+  const [email, setEmail] = useState('');
+
+  const today = startOfDay(new Date());
 
   const customDate = (day) => {
-    if(isEqual(day,selectedDate)){
+    if(isEqual(day,today)){
       return 'Today';
     }
-    else if(isEqual(day,add(selectedDate,{days:1}))){
+    else if(isEqual(day,add(today,{days:1}))){
       return 'Tomorrow';
     }
     else{
@@ -42,111 +50,224 @@ const SlotBooking = ({confirmBooking}) => {
 
  const handleDateSelect = (day) => {
     setSelectedDate(day);
-    if (selectedSlot) {
-      // Pass updated booking details to parent
-      const bookingDetails = {
-        date: datesList.find((d) => d.day === day)?.date || day,
-        time: selectedSlot,
-      };
-      confirmBooking(bookingDetails);
-    }
+    
   };
 
   const handleSlotSelect = (slot) => {
     setSelectedSlot(slot);
-    if (selectedDate) {
-      // Pass updated booking details to parent
-      const bookingDetails = {
-        date: datesList.find((d) => d.day === selectedDate)?.date || selectedDate,
-        time: slot,
-      };
-      confirmBooking(bookingDetails);
-    }
+    setOpen(true)
+    // if (selectedDate) {
+    //   // Pass updated booking details to parent
+    //   const bookingDetails = {
+    //     date: datesList.find((d) => d.day === selectedDate)?.date || selectedDate,
+    //     time: slot,
+    //   };
+    //   confirmBooking(bookingDetails);
+    // }
   };
 
-  return (
+
+    const handleConfirm = () =>{
+      const bookingDetails = {
+        date:  selectedDate,
+        time: selectedSlot,
+        email: email,
+      };
+      confirmBooking(bookingDetails);
+      setOpen(false);
+      alert('Booking Confirmed');
+    }
+    
+    
+    return (
     <Box sx={{ p: 4, maxWidth: '100%', mx: "auto" }}>
       {/* Date Navigation */}
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
           mb: 3,
         }}
       >
-        <IconButton>
-          <ArrowBackIos sx={{color: 'rgba(42, 167, 255, 1)', border: '1px solid rgba(224, 224, 228, 1)', p: 2, borderRadius: 10}}/>
-        </IconButton>
-        <Box sx={{ display: "flex", justifyContent: "space-around", flex: 1 , overflowX: 'auto'}}>
-          {datesList.map((date, index) => (
-            <Box
-              key={index}
-              sx={{
-                textAlign: "center",
-                cursor: "pointer",
-                color: selectedDate === date.day ? "black" : "gray",
-              }}
-              onClick={() => handleDateSelect(date.day)}
-            >
-              <Typography variant="subtitle1" component='p' fontWeight="bold">
-                {customDate(date)}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: selectedDate === date.day ? "green" : "gray" }}
-              >
-                {totalSlots} Slots Available
-              </Typography>
-              {selectedDate === date.day && (
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: "3px",
-                    backgroundColor: "rgba(42, 167, 255, 1)",
-                    mx: "auto",
-                    mt: 1,
-                  }}
-                />
-              )}
-            </Box>
+
+        <Swiper
+          modules={[Navigation]}
+          navigation={true}
+          slidesPerView={3}
+          spaceBetween={10}
+          style={{
+            "--swiper-navigation-color": "rgba(42, 167, 255, 1)",
+            "--swiper-navigation-size": "20px",
+          }}
+        >
+
+          {datesList.map((date,idx) => (
+            <SwiperSlide key={idx}>
+              <Box onClick={()=> handleDateSelect(date)} sx={{textAlign: 'center'}}>
+                <Typography variant="subtitle1" component="p" fontWeight={isEqual(selectedDate, date) ? "bold" : "normal"}>
+                  {customDate(date)}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: isEqual(selectedDate, date) ? "green" : "gray"  }}
+                >
+                  {totalSlots} Slots Available
+                </Typography>
+                {isEqual(selectedDate, date) && (
+                  <Box
+                    sx={{
+                      width: "80%",
+                      height: "3px",
+                      backgroundColor: "rgba(42, 167, 255, 1)",
+                      mx: "auto",
+                      mt: 1,
+                    }}
+                  />
+                )}
+              
+              </Box>
+            </SwiperSlide>
           ))}
-        </Box>
-        <IconButton>
-          <ArrowForwardIos sx={{color: 'rgba(42, 167, 255, 1)', border: '1px solid rgba(224, 224, 228, 1)', p: 2, borderRadius: 10}}/>
-        </IconButton>
+        </Swiper>
       </Box>
 
+        
+
       {/* Time Slots */}
-      {Object.keys(slots).map((period, index) => (
-        <Box key={index} sx={{ mb: 3 , display: 'flex', justifyContent: 'flex-start' , alignItems: 'center' ,gap: 2, borderBottom: '1px solid rgba(240, 240, 245, 1)' ,p:2}}>
-          <Typography variant="p" component='p' fontWeight="400" fontSize="16px" color="rgba(65, 65, 70, 1)">
-            {period}
-          </Typography>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            {slots[period].map((slot, idx) => (
-              <Grid item key={idx}>
-                <Button
-                  variant={selectedSlot === slot ? "contained" : "outlined"}
-                  
+      
+      <Stack>
+        {slots.Morning.length > 0 && (
+          <Stack 
+            direction='row' 
+            alignItems="center"
+            px={{ xs: 0, md: 6 }}
+            flexWrap={"wrap"} 
+            sx={{mb: 2}}
+          >
+            <Typography >
+              Morning
+            </Typography>
+            {slots.Morning.map((slot) => (
+              <Chip 
+                  label={slot}
                   onClick={() => handleSlotSelect(slot)}
-                  sx={{
-                    borderRadius: 2,
-                    px: 3,
-                    py: 1,
-                    textTransform: "none",
-                    backgroundColor: selectedSlot === slot ? 'rgba(42, 167, 255, 1)' : "white",
-                    color: selectedSlot === slot ? "white" : "rgba(42, 167, 255, 1)",
-                    borderColor: 'rgba(42, 167, 255, 1)',
-                  }}
-                >
-                  {slot}
-                </Button>
-              </Grid>
+                  variant={selectedSlot === slot ? "filled" :"outlined"}
+                  backgroundColor= {selectedSlot === slot ? "rgba(42, 167, 255, 1)" : "white"}
+                  sx={{fontSize: { xs: 10, md: 14 }, ml: 5, borderColor: 'rgba(42, 167, 255, 1)' , borderRadius: '5px'}}
+                />
             ))}
-          </Grid>
-        </Box>
-      ))}
+          </Stack>
+        )}
+
+        {slots.Afternoon.length > 0 && (
+          <Stack 
+            direction='row' 
+            alignItems="center"
+            px={{ xs: 0, md: 6 }}
+            flexWrap={"wrap"} 
+            sx={{mb: 2}}
+            >
+            <Typography >
+              Afternoon
+            </Typography>
+            {slots.Afternoon.map((slot) => (
+              <Chip 
+                  label={slot}
+                  onClick={() => handleSlotSelect(slot)}
+                  variant='outlined'
+                  backgroundColor= {selectedSlot === slot ? "rgba(42, 167, 255, 1)" : "white"}
+                  sx={{fontSize: { xs: 10, md: 14 }, ml: 5, borderColor: 'rgba(42, 167, 255, 1)' , borderRadius: '5px'}}
+                />
+            ))}
+          </Stack>
+        )}
+
+        {slots.Evening.length > 0 && (
+          <Stack 
+            direction='row' 
+            alignItems="center"
+            px={{ xs: 0, md: 6 }}
+            flexWrap={"wrap"}
+            sx={{mb: 2}}
+            
+          >
+            <Typography fontSize={14}>
+              Evening
+            </Typography>
+            {slots.Evening.map((slot) => (
+              <Chip 
+                  label={slot}
+                  variant={selectedSlot === slot ? "filled" :"outlined"}
+                  backgroundColor= {selectedSlot === slot ? "rgba(42, 167, 255, 1)" : "white"}
+                  onClick={() => handleSlotSelect(slot)}
+                  sx={{fontSize: { xs: 10, md: 14 }, ml: 5, borderColor: 'rgba(42, 167, 255, 1)' , borderRadius: '5px' , }}
+                />
+            ))}
+          </Stack>
+        )}
+      </Stack>
+
+        <Modal open={open} onClose={() =>setOpen(false)}>
+          <Box 
+            backgroundColor= 'white'
+            height= 'max-content'
+            width= 'max-content'
+            sx={{p: 2 , position: 'absolute' , top: '30%', left: '30%'}}
+            >
+              <Typography variant="h5" component="h2" gutterBottom>
+                Confirm Booking
+              </Typography>
+              <Typography variant="body1" component='p' gutterBottom >
+                 Please enter your email to confirm the appointment for {' '}
+                 <Typography component='span' fontWeight='bold'>
+                  {selectedSlot}
+                 </Typography> {' '} 
+                 on {' '}
+                 <Typography  component='span' fontWeight='bold'>
+                   {format(selectedDate, "E, d LLL yyyy")}
+                 </Typography>
+              </Typography>
+              <Box 
+                component="form" 
+                sx={{ mt: 2 }}
+                onSubmit= {() => {
+                    if(!email.trim()) {
+                      alert('Email is required');
+                      return;
+                    }
+                    handleConfirm();
+                } } 
+                >
+                  <input
+                  type="email"
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                   placeholder="Enter your email"
+                  style={{
+                   width: "80%",
+                   padding: "8px",
+                   marginBottom: "16px",
+                   borderRadius: "4px",
+                   border: "1px solid #ccc",
+                  }}
+                   />
+           
+              <Stack direction='row' spacing={2}>
+                <Button 
+                type="submit"
+                variant="contained"
+                
+                > 
+                  Confirm
+                </Button>
+                <Button 
+                variant="outlined"
+                onClick={() => setOpen(false)}
+                >
+                  Cancel
+                </Button>
+              </Stack>
+            </Box>
+          </Box>
+        </Modal>
     </Box>
   );
 };

@@ -33,7 +33,7 @@ img{
     flex-direction: column;
     gap: 15px;
 }
-span{
+.titleSection span{
     font-family: Poppins;
     font-weight: 700;
     font-size: 56px;
