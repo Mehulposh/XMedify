@@ -18,11 +18,11 @@ function Navbar(){
                 
                     
                         <p>Find Doctors</p>
-                    
-                    
-                        <p>Hospitals</p>
-                    
-                    
+
+
+                        <p onClick={() => navigate('/SearchResult')}>Hospitals</p>
+
+        
                         <p>Medicines</p>
                     
                     

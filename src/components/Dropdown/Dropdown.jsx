@@ -1,6 +1,7 @@
 import React,{useState,useEffect,useRef} from 'react';
 import './Dropdown.css';
 import { IoIosArrowDown } from "react-icons/io";
+import { IoMdSearch } from "react-icons/io";
 
 function DropDown({fetchData, placeholder , state , setFunction ,id}){
     const [data,setData] = useState([]);
@@ -60,7 +61,7 @@ function DropDown({fetchData, placeholder , state , setFunction ,id}){
     return(
         <div className='dropdown' id={id} ref={dropdownRef}>
             <div className='dropdown-header' onClick={handleToggle}>
-                {selectedOption ||placeholder} <IoIosArrowDown/>
+               <div className='dropdown-header-content'><IoMdSearch/>{selectedOption ||placeholder}</div>  <IoIosArrowDown/>
             </div>
             {isOpen && (
                 <ul className='dropdown-list'>

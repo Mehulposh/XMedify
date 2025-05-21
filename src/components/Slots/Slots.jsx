@@ -1,31 +1,51 @@
 import React, { useState } from "react";
 import { Box, Button, Typography, Grid, IconButton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { format, add, isEqual, startOfDay } from 'date-fns'
+
+function dateList(){
+  const Today = startOfDay(new Date());
+  const dates = [];
+
+  for(let i =0;i<7;i++){
+    dates.push(add(Today, { days: i }));
+  }
+
+  return dates;
+}
+
 
 const SlotBooking = ({confirmBooking}) => {
-  const [selectedDate, setSelectedDate] = useState("Today");
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedSlot, setSelectedSlot] = useState("");
+  const [datesList , setDatesList] = useState(dateList());
 
-  const dates = [
-    { day: "Today", date: new Date().toDateString(), slotsAvailable: 11 },
-        { day: "Tomorrow", date: new Date(Date.now() + 86400000).toDateString(), slotsAvailable: 17 },
-        { day: "Fri, 22 May", date: "2025-05-22", slotsAvailable: 18 },
-  ];
-
+  const customDate = (day) => {
+    if(isEqual(day,selectedDate)){
+      return 'Today';
+    }
+    else if(isEqual(day,add(selectedDate,{days:1}))){
+      return 'Tomorrow';
+    }
+    else{
+      return format(day ,"E ,d   LLL");
+    }
+  };
+  
   const slots = {
     Morning: ["11:30 AM"],
     Afternoon: ["12:00 PM", "12:30 PM", "01:30 PM", "02:00 PM", "02:30 PM"],
     Evening: ["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"],
   };
 
-  
+  const totalSlots = slots.Afternoon.length + slots.Evening.length + slots.Morning.length;
 
  const handleDateSelect = (day) => {
     setSelectedDate(day);
     if (selectedSlot) {
       // Pass updated booking details to parent
       const bookingDetails = {
-        date: dates.find((d) => d.day === day)?.date || day,
+        date: datesList.find((d) => d.day === day)?.date || day,
         time: selectedSlot,
       };
       confirmBooking(bookingDetails);
@@ -37,7 +57,7 @@ const SlotBooking = ({confirmBooking}) => {
     if (selectedDate) {
       // Pass updated booking details to parent
       const bookingDetails = {
-        date: dates.find((d) => d.day === selectedDate)?.date || selectedDate,
+        date: datesList.find((d) => d.day === selectedDate)?.date || selectedDate,
         time: slot,
       };
       confirmBooking(bookingDetails);
@@ -58,8 +78,8 @@ const SlotBooking = ({confirmBooking}) => {
         <IconButton>
           <ArrowBackIos sx={{color: 'rgba(42, 167, 255, 1)', border: '1px solid rgba(224, 224, 228, 1)', p: 2, borderRadius: 10}}/>
         </IconButton>
-        <Box sx={{ display: "flex", justifyContent: "space-around", flex: 1 }}>
-          {dates.map((date, index) => (
+        <Box sx={{ display: "flex", justifyContent: "space-around", flex: 1 , overflowX: 'auto'}}>
+          {datesList.map((date, index) => (
             <Box
               key={index}
               sx={{
@@ -70,13 +90,13 @@ const SlotBooking = ({confirmBooking}) => {
               onClick={() => handleDateSelect(date.day)}
             >
               <Typography variant="subtitle1" component='p' fontWeight="bold">
-                {date.day}
+                {customDate(date)}
               </Typography>
               <Typography
                 variant="body2"
                 sx={{ color: selectedDate === date.day ? "green" : "gray" }}
               >
-                {date.slotsAvailable} Slots Available
+                {totalSlots} Slots Available
               </Typography>
               {selectedDate === date.day && (
                 <Box

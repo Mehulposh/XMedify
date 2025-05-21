@@ -1,3 +1,14 @@
+.heroContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    /* border: 1px solid black; */
+}
+
+
 .hero{
     display: flex;
     align-items: center;
@@ -5,6 +16,7 @@
     margin: 0;
     padding: 0;
     width: 100vw;
+    
     /* border: 1px solid black; */
     
 }
@@ -60,3 +72,8 @@ p{
     letter-spacing: 2%;
     color: #5C6169;
 }
+
+/* .searchCard{
+    position: absolute;
+    top: 100%;
+} */

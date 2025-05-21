@@ -136,3 +136,27 @@ color: rgba(1, 164, 0, 1);
     width: 80px;
 }
 
+.bookingDiv{
+    display: flex;
+    gap: 10px;
+
+}
+
+.bookingDiv P{
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 3px;
+    width: max-content;
+    height: 30px;
+    padding: 5px;
+}
+
+.booking-time{
+    border: 1px solid rgba(42, 167, 255, 1);
+    color: rgba(42, 167, 255, 1);
+}
+
+.booking-date{
+    border:  1px solid rgba(0, 165, 0, 1);
+    color: rgba(0, 165, 0, 1);
+}

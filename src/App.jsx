@@ -1,7 +1,7 @@
 import React , { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import SlotSelection from "./pages/SlotSelection";
+import SearchResult from "./pages/SearchResult/SearchResults";
 import MyBookings from "./pages/Bookings/MyBookings";
 import { AppContext } from "./Context/AppContext";
 import Vission from './components/Vission/Vission'
@@ -25,7 +25,7 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/slot-selection" element={<SlotSelection />} />
+                <Route path="/SearchResult" element={<SearchResult />} />
                 <Route path="/my-bookings" element={<MyBookings />} />
             </Routes>
             <Access/>

@@ -40,13 +40,13 @@ function MyBookings() {
               'date': item['date'],
               'id': item['id'],
             };
-           return <CenterCard data={data} key={item.id}/>
+           return <CenterCard data={data} key={item.id} booking={true}/>
           })
         ) : (
           <h1>No bookings available</h1>
         )}
-      </div> 
-      <div className="bookingsColimn2">
+      </div>
+      <div className="bookingsColumn2">
         <img src={promo} alt="advertisement" className="advertisement" />
       </div>
       

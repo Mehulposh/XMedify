@@ -36,9 +36,9 @@ function Home() {
 
   return (
     <div>
-    s
+    
     <Hero/>
-    <Searchcard bottom={true} />
+    {/* <Searchcard bottom={true} /> */}
     <Slider/>
     <Sepciality/>
     <DoctorSlider/>

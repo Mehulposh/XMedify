@@ -14,17 +14,25 @@ function Slider(){
 <div className='sliderContainer'>
     <div className='slider'> 
         <Swiper 
-            modules={[Autoplay,Pagination]}
-            autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-            }}
-            loop= {true}
-            // spaceBetween={10}
+            modules={[Pagination]}
+            spaceBetween={10}
             slidesPerView={3}
-            centeredSlides={true}
+            
             pagination={{ clickable: true }}
+            breakpoints={
+                        {
+                            767: {
+                                slidesPerView: 3
+                            }
+                        }
+                    }
         >
+            <SwiperSlide className='slide'>
+                <img src={img_1} />
+            </SwiperSlide>
+            <SwiperSlide className='slide'>
+                <img src={img_2}/>
+            </SwiperSlide>
             <SwiperSlide className='slide'>
                 <img src={img_1} />
             </SwiperSlide>

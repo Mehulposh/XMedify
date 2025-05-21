@@ -12,7 +12,7 @@ select{
 .dropdown{
 
     
-    width: 300px;
+    width: 500px;
     color: #ABB6C7;
     position: relative;
     
@@ -63,4 +63,12 @@ select{
     background-color: rgba(42, 167, 255, 1);
     color: white;
     border-radius: 10px;
+}
+
+.dropdown-header-content{
+    width: 100px;
+    display: flex;
+    
+    align-items: center;
+    gap: 10px;
 }

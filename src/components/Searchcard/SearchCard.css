@@ -8,8 +8,8 @@
     flex-direction: column;
     justify-content: space-evenly;
     position: absolute;
-    top: 700px;
-    left: 135px;
+    top: 70%;
+    
     z-index: 30;
 }
 
@@ -46,7 +46,7 @@
     
     box-shadow: 6px 6px 35px 0px rgba(16, 40, 81, 0.11);
     border-radius: 15px;
-    width: 70%;
+    width: 80%;
     height: 70px;
     padding-top: 15px;
     background-color: white;

@@ -15,7 +15,7 @@ import Booking from '../Slots/Slots';
 //     "Hospital overall rating": 4.5
 // };
 
-function CenterCard({data, centerSelect, isSlotSelected, onBooking}) {
+function CenterCard({data, centerSelect, isSlotSelected, onBooking , booking}) {
     const [showSlots , setShowSlots] = React.useState(false);
     
 
@@ -48,14 +48,13 @@ function CenterCard({data, centerSelect, isSlotSelected, onBooking}) {
                     </p>
                 </div>
             </div>
-            <div className="center-booking">
-                <div className="bookingCard">
-                    <p>{data.time}</p>
-                    <p>{data.date}</p>
-                </div>
-                <p>Available Today</p>
-                <Button className="book-button" onClick={handleClick} >Book FREE Center Visit</Button>
-
+            <div className={booking ? "bookingCard" :"center-booking"}>
+                {booking ? (<div className="bookingDiv" >
+                    <p className="booking-time">{data.time}</p>
+                    <p className="booking-date">{data.date}</p>
+                </div>) :
+                (<><p >Available Today</p>
+                <Button className="book-button" onClick={handleClick} >Book FREE Center Visit</Button></>)}
             </div>
             
         </div>

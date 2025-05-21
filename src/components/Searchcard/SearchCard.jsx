@@ -3,7 +3,7 @@ import { AppContext } from '../../Context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import DropDown from '../Dropdown/Dropdown';
-import { getStates, getCities , getCenters } from '../../api/api'; 
+import { getStates, getCities ,getCenters } from '../../api/api'; 
 import Search from '../../assets/Search.svg';
 import ServiceCard from '../ServicesCard/ServicesCard';
 import Doctor from '../../assets/Doctor.svg';
@@ -17,7 +17,7 @@ import './SearchCard.css';
 const assests = [Doctor,DrugStore,Hospital,Capsule,Ambulance];
 
 function Searchcard({bottom}){
-    const { setCenters, selectedState, setSelectedState, selectedCity, setSelectedCity } = React.useContext(AppContext);
+    const {setCenters,selectedCity, selectedState, setSelectedState, setSelectedCity } = React.useContext(AppContext);
     const navigate = useNavigate();
     
 
@@ -29,7 +29,7 @@ function Searchcard({bottom}){
         console.log(data);
 
         // Navigate to the slot selection page
-        navigate('/slot-selection');
+        navigate('/SearchResult');
     } catch (err) {
         console.error(err);
     }

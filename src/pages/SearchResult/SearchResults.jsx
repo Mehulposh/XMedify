@@ -1,11 +1,12 @@
 import React from "react";
-import { AppContext } from "../Context/AppContext";
-import promo from '../../src/assets/addvertise.svg';2
-import Searchcard from "../components/Searchcard/SearchCard";
-import CenterCard from "../components/CenterCard/CenterCard";
-import Faq from "../components/FAQ/Faq";
+import { AppContext } from "../../Context/AppContext";
+import promo from '../../assets/addvertise.svg';
+import Searchcard from "../../components/Searchcard/SearchCard";
+import CenterCard from "../../components/CenterCard/CenterCard";
 
-import './Slot.css'
+import Faq from "../../components/FAQ/Faq";
+
+import './SearchResult.css';
 
 function SlotSelection() {
     const { centers , selectedCity , setBookingDetails} = React.useContext(AppContext);
@@ -63,8 +64,7 @@ function SlotSelection() {
             </div>
 
             <Faq/>
-            {/* <Access/>
-            <Footer/> */}
+            
           
         </div>
     )
